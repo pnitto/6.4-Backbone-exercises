@@ -9,4 +9,4 @@ var Post = Backbone.Model.extend({
 
 });
 
-module.exports = Post
+module.exports = Post;

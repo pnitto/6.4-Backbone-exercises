@@ -19,3 +19,18 @@ body {
   color: $base-font-color;
   font-family: $base-font-family;
 }
+
+//--C--//
+.blog-list {
+  margin-left: 40%;
+  list-style-type: none;
+}
+.li-c {
+  max-width: 50%;
+  border: 2px solid black;
+  min-width: 10%;
+  margin-bottom: 3%;
+}
+.js-title:hover {
+  color: red;
+}
