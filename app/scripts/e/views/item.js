@@ -1,23 +1,38 @@
-var Blog = require('e/models/e-blogs');
 
 var BlogView = Backbone.View.extend({
-  model: new Blog(),
   tagName: 'li',
-  template: JST['e/e'],
+  template: JST['e/e-item'],
   events: {
-    'click .edit-btn' : 'edit'
-  },
-  render: function(){
-    this.$el.html(this.template().toJSON())
-    return this;
+    //'click .title' : 'detailview',
+    'click .edit-btn': 'edit',
+    'click .update-btn': 'update',
   },
   edit: function(){
-      var title = $('.title').html();
-      var body = $('.body').html();
-      $('.title').html('<input type="text" class="update-title" value="'+ title +
-    '">')
-    $('.body').html('<input type="text" class="update-body" value="'+ body +
-    '">')
+    $('.delete-btn').hide();
+    $('.edit-btn').hide();
+    $('.update-btn').show();
+    $('.cancel-btn').show();
+
+    var title = this.$('.title').html();
+    var body = this.$('.body').html();
+    this.$('.title').html('<input type="text" class="title-update" value="' + title + '">');
+    this.$('.body').html('<input type="text" class="body-update" value="' + body + '">');
+  },
+  update: function(){
+    this.model.set('title', $('.title-update').val());
+    this.model.set('body', $('.body-update').val());
+    this.$el.html(this.template(this.model.toJSON()));
+    return this;
+  },
+  render: function(){
+    this.$el.html(this.template(this.model.toJSON()));
+    return this;
+  },
+  detailview: function(){
+    $('div').html('');
+    var itemView = new BlogView({model: this.model});
+    $('#container').append(itemView.render().el);
+    return this;
   }
 });
 
