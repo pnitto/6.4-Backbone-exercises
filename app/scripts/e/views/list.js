@@ -2,20 +2,20 @@ var BlogCollection = require('e/models/e-blogs-collection');
 var BlogView = require('e/views/item');
 
 var BlogsView = Backbone.View.extend({
-  model: BlogCollection,
   el: $('.blog-list'),
+  template: JST['e/e'],
+
   initialize: function(){
-    this.model.on('add', this.render, this);
+    this.listenTo(this.collection, 'add remove', this.render);
   },
   render: function(){
     var self = this;
     this.$el.html('');
-    _.each(this.model.toArray(),function(blog){
+    _.each(this.collection.toJSON(),function(blog){
       self.$el.append((new BlogView({model: blog})).render.$el);
   });
   return this;
-}
+},
 });
 
-
-module.exports = BlogsView
+module.exports = BlogsView;

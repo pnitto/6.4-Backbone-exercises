@@ -9,28 +9,16 @@ var blogItemView = Backbone.View.extend({
   initialize: function(){
     //console.log("blogItemView")
   },
-
   render: function(){
-  this.$el.html(this.template({
-        model: this.model.toJSON()
-      }));
+  this.$el.html(this.template(this.model.toJSON()));
       return this;
     },
   detailview: function(){
-    this.$el.html(this.template());
+    $('.item-view').html('');
+    var itemView = new blogItemView({model: this.model});
+    $('#container').append(itemView.render().el);
     return this;
   }
   });
-/*
-serializeForm: function() {
-    var result = {};
-    var inputs = this.$el.serializeArray();
-    inputs.forEach(function(input) {
-      result[input.name] = input.value;
-    });
-    return result;
-  }
-  */
-
 
 module.exports = blogItemView;

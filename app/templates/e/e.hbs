@@ -1,3 +1,4 @@
+<div class="whole-page">
 <h1 class="crud-heading">CRUD App</h1>
 <label for="title"></label>
 <input name="title" value="Title" class="input-crud-title">
@@ -8,8 +9,13 @@
 <input type="submit" value="Create Post" class="add-post">
 
 <ul class="blog-list">
-  <h1>{{model.title}} </h1>
-  <h1>{{model.body}} </h1>
-  <button class="delete-btn">Delete</button>
-  <button class="edit-btn">Edit</button>
+{{#each this}}
+  <h1 class="title">{{title}}</h1>
+  <h1 class="body">{{body}}</h1>
+{{/each}}
+<button class="delete-btn">Delete</button>
+<button class="edit-btn">Edit</button>
 </ul>
+
+
+</div>
