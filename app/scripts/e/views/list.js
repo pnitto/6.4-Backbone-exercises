@@ -10,7 +10,7 @@ var BlogsView = Backbone.View.extend({
     this.listenTo(this.collection, 'change', function(){
       setTimeout(function(){
         self.render();
-      },30)
+      },30);
     },this);
   },
   render: function(){

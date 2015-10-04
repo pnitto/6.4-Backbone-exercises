@@ -1,4 +1,4 @@
-var Blog = require('c/models/blog-reading')
+var Blog = require('c/models/blog-reading');
 
 var blogItemView = Backbone.View.extend({
   tagName: 'li',

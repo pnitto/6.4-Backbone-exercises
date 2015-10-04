@@ -6,6 +6,11 @@ var BlogView = Backbone.View.extend({
     //'click .title' : 'detailview',
     'click .edit-btn': 'edit',
     'click .update-btn': 'update',
+    'click .delete-btn': 'delete'
+  },
+  render: function(){
+    this.$el.html(this.template(this.model.toJSON()));
+    return this;
   },
   edit: function(){
     $('.delete-btn').hide();
@@ -18,14 +23,13 @@ var BlogView = Backbone.View.extend({
     this.$('.title').html('<input type="text" class="title-update" value="' + title + '">');
     this.$('.body').html('<input type="text" class="body-update" value="' + body + '">');
   },
+  delete: function(){
+    this.model.destroy();
+  },
   update: function(){
     this.model.set('title', $('.title-update').val());
     this.model.set('body', $('.body-update').val());
-    this.$el.html(this.template(this.model.toJSON()));
-    return this;
-  },
-  render: function(){
-    this.$el.html(this.template(this.model.toJSON()));
+    //this.$el.html(this.template(this.model.toJSON()));
     return this;
   },
   detailview: function(){
