@@ -9,7 +9,7 @@ $(document).ready(function(){
 $('#container').append(JST['e/e']());
 
 App.Collection = new BlogCollection();
-
+//App.Collection.fetch();
 App.ListView = new BlogsView({collection: App.Collection});
 
 $('.add-post').on('click',function(){
@@ -17,11 +17,10 @@ $('.add-post').on('click',function(){
     title:$('.input-crud-title').val(),
     body:$('.input-crud-body').val()
   });
+  $('.crud-div').html('');
   App.Collection.add(blog);
-  $('.crud-div').html('')
 
   console.log(blog.toJSON());
   $('#container').append(App.ListView.render().el);
-
 });
 });

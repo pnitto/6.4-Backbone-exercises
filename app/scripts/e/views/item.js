@@ -8,7 +8,7 @@ var BlogView = Backbone.View.extend({
     'click .update-btn': 'update',
     'click .delete-btn': 'delete'
   },
-  render: function(){
+  render: function(e){
     this.$el.html(this.template(this.model.toJSON()));
     return this;
   },

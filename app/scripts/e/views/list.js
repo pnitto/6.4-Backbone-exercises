@@ -20,7 +20,7 @@ var BlogsView = Backbone.View.extend({
   },
   renderChildren: function(){
   var self = this;
-  //this.$el.html(this.template());
+  this.$el.html(this.template());
   this.collection.each(function(blog){
     var blogsView = new BlogView({model:blog});
     self.$el.append(blogsView.render().el);
